@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品搜索</title>
+
+    <style>
+        .searcharea {
+            width: 20%;
+            margin: auto;
+        }
+
+        .input_text {
+            width: 70%;
+            height: 20px;
+        }
+
+        .input_btn {
+            width: 20%;
+            height: 27px;
+        }
+
+        .resultarea {
+            margin-left: 30%;
+            margin-top: 20px;
+        }
+        .active{
+            font-weight: 700;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%">
+    <div class="searcharea">
+        <form method="get" action="/search">
+            {% block searchtext %}<input type="text" class="input_text" name="q" placeholder="搜索商品">{% endblock searchtext %}
+
+            <input type="submit" class="input_btn" name="" value="搜索">
+        </form>
+    </div>
+
+    <div class="resultarea">
+        <p>结果区：</p>
+        {% block body %}{% endblock body %}
+
+    </div>
+</div>
+
+
+</body>
+</html>
