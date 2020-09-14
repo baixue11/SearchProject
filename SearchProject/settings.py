@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app01.apps.App01Config',
-    'haystack'   #ע��ȫ�ļ������
+    'haystack'   #注册全文检索框架
 ]
 
 MIDDLEWARE = [
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'SearchProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'd2m',
-        'USER': 'root',
-        'PASSWORD': 'kexin2019',
-        'HOST': '14.29.236.30',
+        'NAME': '数据库名',
+        'USER': '用户名',
+        'PASSWORD': '数据库密码',
+        'HOST': 'ip',
         'PORT':3306,
     }
 }
@@ -126,18 +126,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# ȫ�ļ�����ܵ�����
+# 全文检索框架的配置
 HAYSTACK_CONNECTIONS = {
     'default': {
-        # ʹ��whoosh����,����ʹ������jieba�ִ���
+        # 使用whoosh引擎,并是使用中文jieba分词器
         'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
-        # �����ļ�·��
+        # 索引文件路径
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     }
 }
 
-# �����ӡ��޸ġ�ɾ������ʱ���Զ���������
+# 当添加、修改、删除数据时，自动生成索引
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-# ָ���������ÿҳ��ʾ������
+# 指定搜索结果每页显示的条数
 HAYSTACK_SEARCH_RESULTS_PER_PAGE=1
